@@ -1,3 +1,11 @@
+
+/**
+ * Microsoft Clarity Configuration
+ * IMPORTANT: From Oct 31, 2025, Microsoft Clarity requires explicit consent signals
+ * for visitors from EEA, UK, and Switzerland. This configuration ensures compliance.
+ */
+
+
 /**
 you can change the cookie category description text by this class. like you can change the essential cookies description text size.
   .broadcookiedes {
