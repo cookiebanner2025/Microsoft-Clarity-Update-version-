@@ -93,17 +93,17 @@ const config = {
         enabled: true, // Set to true to enable URL filtering
         showOnUrls: [
             // Add your specific URLs here
-            '/privacy-policy', // Exact path
-            '/about-us', // Exact path
-            '/contact', // Exact path
-            '/blog/*', // Wildcard - any URL starting with /blog/
+            '/example-privacy-policy', // Exact path
+            '/example-about-us', // Exact path
+            '/example-contact', // Exact path
+            '/example-blog/*', // Wildcard - any URL starting with /blog/
             '*special-page*', // Contains - any URL with 'special-page' in it
-            'https://www.yesyoudeserve.tours/exact-full-url' // Full URL
+            'https://example.com/exact-full-url' // Full URL
         ],
         // OR use this alternative approach if you prefer to hide on specific URLs
         hideOnUrls: [
             // '/home',
-             '/shop/*'
+           // '/shop/*'
         ]
     },
 
