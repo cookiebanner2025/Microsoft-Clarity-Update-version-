@@ -88,6 +88,15 @@ const config = {
 
 
 
+    // NEW: Cookie Banner Trigger Configuration
+    bannerTriggers: {
+        enabled: true, // Set to true to enable clicking links to open banner
+        triggerText: "Quick Links", // The text that will trigger the banner
+        triggerClass: "cookie-banners-trigger", // OR use a CSS class instead
+        triggerId: "cookie-banner-trigger" // OR use an ID instead
+    },
+  
+
    // NEW: URL Filter Configuration
     urlFilter: {
         enabled: false, // Set to true to enable URL filtering
@@ -3817,6 +3826,9 @@ function sendClarityConsentSignal(consentGranted) {
     
     // Set up event listeners
     setupEventListeners();
+
+    // NEW: Setup banner triggers
+    setupBannerTriggers();
     
     // Setup cookie details toggles
     document.querySelectorAll('.cookie-details-header').forEach(header => {
@@ -3915,6 +3927,52 @@ function setupPasswordPromptEvents() {
                 errorMessage.textContent = translations[lang].passwordIncorrect;
             }
         });
+    }
+}
+
+
+
+
+// NEW: Setup banner trigger functionality
+function setupBannerTriggers() {
+    if (!config.bannerTriggers.enabled) return;
+    
+    // Option 1: Trigger by text content
+    if (config.bannerTriggers.triggerText) {
+        const elements = Array.from(document.querySelectorAll('*')).filter(el => 
+            el.textContent.trim() === config.bannerTriggers.triggerText
+        );
+        elements.forEach(element => {
+            element.style.cursor = 'pointer';
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                showCookieBanner();
+            });
+        });
+    }
+    
+    // Option 2: Trigger by CSS class
+    if (config.bannerTriggers.triggerClass) {
+        const elements = document.querySelectorAll('.' + config.bannerTriggers.triggerClass);
+        elements.forEach(element => {
+            element.style.cursor = 'pointer';
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                showCookieBanner();
+            });
+        });
+    }
+    
+    // Option 3: Trigger by ID
+    if (config.bannerTriggers.triggerId) {
+        const element = document.getElementById(config.bannerTriggers.triggerId);
+        if (element) {
+            element.style.cursor = 'pointer';
+            element.addEventListener('click', function(e) {
+                e.preventDefault();
+                showCookieBanner();
+            });
+        }
     }
 }
 
